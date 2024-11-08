@@ -1,6 +1,7 @@
 
 import Navbar from "@/components/Navbar";
 import "@/assets/styles/global.css";
+import Footer from "@/components/Footer";
 
 export const metadata = {
     title: "Property Pulse",
@@ -15,6 +16,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
                 <main>
                     { children }
                 </main>
+                <Footer />
             </body>
         </html>
     );

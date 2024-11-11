@@ -1,7 +1,8 @@
+import IUser from "@/interfaces/properties";
 import Image from "next/image";
 import Link from "next/link"
 import { FaBed, FaBath, FaRulerCombined, FaMapMarker, FaMoneyBill } from "react-icons/fa";
-const PropertyCard = ({ property }: { property: any }) => {
+const PropertyCard = ({ property }: { property: IUser }) => {
     const getRateDisplay = () => {
         const rates = property.rates;
         if (rates.weekly) {

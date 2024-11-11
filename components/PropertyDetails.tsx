@@ -1,6 +1,7 @@
+import IUser from "@/interfaces/properties"
 import { FaTimes, FaBed, FaBath, FaRulerCombined, FaMapMarker, FaMoneyBill, FaCheck } from "react-icons/fa"
 
-const PropertyDetails = ({ property }: { property: any}) => {    
+const PropertyDetails = ({ property }: { property: IUser}) => {    
     return (
     <section className="bg-blue-50">
       <div className="container m-auto py-10 px-6">

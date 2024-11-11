@@ -15,10 +15,10 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
            <html>
                 <body>
                     <Navbar />
-                    <main>
+                    {/* <main>
                         { children }
                     </main>
-                    <Footer />
+                    <Footer /> */}
                 </body>
            </html>
         </AuthProvider>

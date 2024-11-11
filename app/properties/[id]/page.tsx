@@ -4,6 +4,7 @@ import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 import PropertyDetails from "@/components/PropertyDetails";
+import { ObjectId } from "mongodb";
 
 const PropertyPage = async( { params }: { params: any} ) => {
     await connectDB();

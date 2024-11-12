@@ -1,6 +1,10 @@
+"use client";
+
+import { useSession } from "next-auth/react";
 import InfoBox from "./InfoBox";
 
 const InfoBoxes = () => {
+    const { data: session } = useSession();
     return ( 
         <section>
           <div className="container-xl lg:container m-auto">
@@ -17,7 +21,8 @@ const InfoBoxes = () => {
                     Find your dream rental property. Bookmark properties and contact owners. 
                 </InfoBox>
 
-                <InfoBox 
+                {session && (
+                  <InfoBox 
                    heading="For Property Owners" 
                    backgroundColor="bg-blue-100" 
                    buttonInfo={{ 
@@ -27,7 +32,8 @@ const InfoBoxes = () => {
                     hoverColor: "bg-blue-600"
                    }}>  
                     List your properties and reach potential tenants. Rent as an airbnb or long term. 
-                </InfoBox>
+                  </InfoBox>)
+                }
             </div>
           </div>
         </section>

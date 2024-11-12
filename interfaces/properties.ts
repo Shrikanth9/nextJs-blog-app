@@ -2,7 +2,7 @@ import { Schema } from "mongoose";
 
 interface IUser {
     _id: Schema.Types.ObjectId;
-    owner: string;
+    owner: Schema.Types.ObjectId;
     name: string;
     type: string;
     description: string;
@@ -27,8 +27,6 @@ interface IUser {
         phone: string;
     };
     images: string[];
-    createdAt: Date;
-    updatedAt: Date;
 }
 
 export default IUser

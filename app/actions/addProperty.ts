@@ -5,11 +5,13 @@ import Property from "@/models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import cloudinary from "@/config/cloudinary";
+import IUser from "@/interfaces/properties";
 
-const addProperty = async (formData: FormData) => {
+const addProperty = async (formData: any) => {
     await connectDB();
     const amenities = formData.getAll('amenities')
-    const images = formData.getAll('images').filter((image: any) => image.name !== '').map((image: any) => image.name);
+    const images = formData.getAll('images').filter((image: any) => image.name !== '');
     
     const sessionUser = await getSessionUser();
 
@@ -17,7 +19,7 @@ const addProperty = async (formData: FormData) => {
         throw new Error('You must be logged in to add a property');
     }
 
-    const propertyData = {
+    const propertyData: any = {
         owner: sessionUser.id,
         name: formData.get('name'),
         type: formData.get('type'),
@@ -42,11 +44,23 @@ const addProperty = async (formData: FormData) => {
             email: formData.get('seller_info.email'),
             phone: formData.get('seller_info.phone'),
         },
-        images
     }
 
-    console.log(propertyData);
-    
+    const imageUrls = [];
+
+    for(const imageFile of images) {
+        const imageBuffer = await imageFile.arrayBuffer();
+        const imageArray = Array.from(new Uint8Array(imageBuffer));
+        const imageData = Buffer.from(imageArray);
+
+        // convert to base64
+        const imageBase64 = imageData.toString('base64');
+
+        const uploadedImage = await cloudinary.uploader.upload(`data:image/jpeg;base64,${imageBase64}`, { folder: 'propertyPulse' });
+        imageUrls.push(uploadedImage.secure_url);
+    }
+
+    propertyData.images = imageUrls;
     
     const newProperty = new Property(propertyData);
     await newProperty.save();

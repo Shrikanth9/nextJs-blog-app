@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import deleteProperty from "@/app/actions/deleteProperty";
+import { toast } from "react-toastify";
 
 const ProfileProperties = ( { properties }: any) => {
 
@@ -10,6 +11,7 @@ const ProfileProperties = ( { properties }: any) => {
         let confirm = window.confirm("Are you sure you want to delete this property?");
         if (confirm) {
             await deleteProperty(propertyId);
+            toast.success("Property deleted successfully");
         }
     }
     return ( 

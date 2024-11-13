@@ -17,7 +17,6 @@ const deleteProperty = async (propertyId: string) => {
     }
     
     let property = await Property.findById(propertyId);
-    property = convertToPlainObj(property);
     
     if(!property) {
         throw new Error('Property not found');

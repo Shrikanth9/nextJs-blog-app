@@ -3,6 +3,8 @@ import Navbar from "@/components/Navbar";
 import "@/assets/styles/global.css";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata = {
     title: "Property Pulse",
@@ -19,6 +21,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
                         { children }
                     </main>
                     <Footer />
+                    <ToastContainer />
                 </body>
            </html>
         </AuthProvider>

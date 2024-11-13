@@ -4,7 +4,7 @@ import profiledefault from "@/assets/images/profile.png";
 import whiteLogo from "@/assets/images/logo-white.png";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGoogle } from "react-icons/fa";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
@@ -101,14 +101,15 @@ const Navbar = () => {
             {/* <!-- Right Side Menu (Logged Out) --> */}
             {!session && 
               (<div className="md:block md:ml-6">
-                <div className="flex items-center">
+                <div className="flex items-center gap-3">
                   { providers && Object.values(providers).map((provider: any, index: number) => (
                     <button
                     key={index}
                     className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
                     onClick={() => signIn(provider.id)}
                   >
-                    <FaGoogle className="text-white mr-2" />
+                    {provider.id === "google" && <FaGoogle className="text-white mr-2" />} 
+                    {provider.id === "github" && <FaGithub className="text-white mr-2" />}
                     <span>Login or Register</span>
                     </button>)) 
                   }

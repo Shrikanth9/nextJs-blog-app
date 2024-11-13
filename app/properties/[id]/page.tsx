@@ -5,11 +5,13 @@ import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 import PropertyDetails from "@/components/PropertyDetails";
 import PropertyImages from "@/components/PropertyImages";
+import { convertToPlainObj } from "@/utils/Utils";
 
 const PropertyPage = async( { params }: { params: any} ) => {
     await connectDB();
     const { id } = await params;
-    const property: any = await Property.findById(id).lean();
+    let property: any = await Property.findById(id).lean();
+    property = convertToPlainObj(property);
     return ( 
       <>
         <PropertyHeaderImage image={property.images[0]} />

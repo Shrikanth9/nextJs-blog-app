@@ -2,11 +2,12 @@ import PropertyCard from "@/components/PropertyCard";
 import Link from "next/link";
 import connectDB from "@/config/database";
 import Property from "@/models/Property"
+import { convertToPlainObj } from "@/utils/Utils";
 
 const HomeProperties = async () => {
     await connectDB();
-    const recentProperties = await Property.find({}).sort({ createdAt: -1 }).limit(3).lean();
-    
+    let recentProperties = await Property.find({}).sort({ createdAt: -1 }).limit(3).lean();
+    recentProperties = convertToPlainObj(recentProperties);
     return ( 
       <>
         <section className="px-4 py-6">

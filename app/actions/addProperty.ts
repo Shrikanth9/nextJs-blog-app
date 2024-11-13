@@ -6,7 +6,6 @@ import { getSessionUser } from "@/utils/getSessionUser";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import cloudinary from "@/config/cloudinary";
-import IUser from "@/interfaces/properties";
 
 const addProperty = async (formData: any) => {
     await connectDB();

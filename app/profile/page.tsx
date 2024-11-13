@@ -5,6 +5,7 @@ import connectDB from "@/config/database";
 import Property from "@/models/Property";
 import profileDefault from "@/assets/images/profile.png"
 import ProfileProperties from "@/components/ProfileProperties";
+import { convertToPlainObj } from "@/utils/Utils";
 
 const ProfilePage = async () => {
     await connectDB();
@@ -14,7 +15,8 @@ const ProfilePage = async () => {
         throw new Error("No user found")
     }
 
-    const properties = await Property.find({ owner: sessionUser.id }).lean();
+    let properties = await Property.find({ owner: sessionUser.id }).lean();
+    properties = convertToPlainObj(properties);
     
     return ( 
         <section className="bg-blue-50">

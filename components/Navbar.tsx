@@ -189,6 +189,7 @@ const Navbar = () => {
                       role="menuitem"
                       tabIndex={-1}
                       id="user-menu-item-0"
+                      onClick={() => setIsProfileOpen((prev) => !prev)}
                       >Your Profile
                     </Link>
                     <Link
@@ -197,6 +198,7 @@ const Navbar = () => {
                       role="menuitem"
                       tabIndex={-1}
                       id="user-menu-item-2"
+                      onClick={() => setIsProfileOpen((prev) => !prev)}
                       >Saved Properties
                     </Link>
                     <button

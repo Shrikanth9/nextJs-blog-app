@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { getSessionUser } from "@/utils/getSessionUser";
-import Link from "next/link";
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
 import profileDefault from "@/assets/images/profile.png"

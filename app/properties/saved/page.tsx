@@ -12,8 +12,7 @@ const SavedPropertiesPage = async() => {
 
     const id = sessionUser.id;
     const bookmarks = await User.findById(id).populate('bookmarks');
-    console.log(bookmarks);
-    
+
     return ( 
         <section className="px-4 py-6">
             <div className="container lg:container mx-auto px-4 py-6">

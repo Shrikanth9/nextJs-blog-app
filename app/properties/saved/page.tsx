@@ -1,6 +1,7 @@
 import PropertyCard from "@/components/PropertyCard";
 import User from "@/models/User";
 import { getSessionUser } from "@/utils/getSessionUser";
+import { convertToPlainObj } from "@/utils/Utils";
 
 
 const SavedPropertiesPage = async() => {
@@ -11,13 +12,12 @@ const SavedPropertiesPage = async() => {
     }
 
     const id = sessionUser.id;
-    const bookmarks = await User.findById(id).populate('bookmarks');
+    let bookmarks = await User.findById(id).populate('bookmarks');
 
     return ( 
         <section className="px-4 py-6">
             <div className="container lg:container mx-auto px-4 py-6">
-                <h1 className="text-2xl mb-4">Saved Properties</h1>
-                { bookmarks.length === 0 ? (
+                { bookmarks.bookmarks.length === 0 ? (
                     <p>No saved properties found.</p>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

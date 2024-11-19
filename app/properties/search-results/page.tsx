@@ -5,7 +5,7 @@ import Property from "@/models/Property";
 import Link from "next/link";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 
-const SearchResults = async({ searchParams }: { searchParams: { location: string, type: string}}) => {
+const SearchResults = async({ searchParams }: any) => {
 
     await connectDB();
     const { location, type } = await searchParams;

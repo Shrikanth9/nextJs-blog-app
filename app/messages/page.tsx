@@ -2,6 +2,7 @@ import MessageCard from "@/components/MessageCard";
 import connectDB from "@/config/database";
 import Message from "@/models/Message";
 import { getSessionUser } from "@/utils/getSessionUser";
+import { convertToPlainObj } from "@/utils/Utils";
 
 const MessagesPage = async() => {
     await connectDB();
@@ -25,8 +26,8 @@ const MessagesPage = async() => {
     .lean();
 
     const messages = [...unreadMessages, ...readMessages].map((messageDoc: any) => {
-        // const message = convertToPlainObj(messageDoc);
-        return messageDoc;
+        const message = convertToPlainObj(messageDoc);
+        return message;
     });
 
     return ( 

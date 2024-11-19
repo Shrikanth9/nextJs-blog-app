@@ -1,9 +1,30 @@
-import { FaPaperPlane } from "react-icons/fa";
-const ContactForm = () => {
+'use client'
+
+import { useActionState } from "react";
+import addMessage from "@/app/actions/addMessage";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import SubmitMessageButton from "./SubmitMessageButton";
+const ContactForm = ({ property }: { property: any }) => {
+  const [state, formAction] = useActionState(addMessage, {} as any);
+
+  useEffect(() => {
+      if(state.error) {
+          toast.error(state.error);
+      }
+
+      if(state.submitted) {
+          toast.success('Message sent successfully');
+      }
+  }, [state])
+
     return ( 
-        <div className="bg-white p-6 rounded-lg shadow-md">
+        !state.submitted ? (<div className="bg-white p-6 rounded-lg shadow-md">
         <h3 className="text-xl font-bold mb-6">Contact Property Manager</h3>
-        <form>
+        <form action={formAction}>
+          <input type="hidden" name="property" value={property._id} />
+          <input type="hidden" name="recipient" value={property.owner} />
+
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -54,27 +75,22 @@ const ContactForm = () => {
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="message"
+              htmlFor="body"
             >
               Message:
             </label>
             <textarea
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 h-44 focus:outline-none focus:shadow-outline"
-              id="message"
-              name="message"
+              id="body"
+              name="body"
               placeholder="Enter your message"
             ></textarea>
           </div>
           <div>
-            <button
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
-              type="submit"
-            >
-              <FaPaperPlane className="mr-2"/> Send Message
-            </button>
+            <SubmitMessageButton />
           </div>
         </form>
-      </div>
+        </div>) : (<p className="text-green-600"> Your message has been sent successfully </p>)
      );
 }
  

@@ -35,7 +35,7 @@ const PropertyPage = async( { params }: { params: any} ) => {
                 <aside className="space-y-4">
                     <BookmarkButton property={property} />
                     <ShareButton property={property}/>
-                    <ContactForm />
+                    <ContactForm property={property}/>
               </aside>
             </div>
           </div>

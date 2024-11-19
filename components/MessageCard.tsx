@@ -2,19 +2,19 @@
 
 import deleteMessage from "@/app/actions/deleteMessage";
 import markMessage from "@/app/actions/markMessage";
-import { useEffect, useState } from "react";
+import { useGlobalContext } from "@/contexts/GlobalContext";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 const MessageCard = ( { message }: { message: any} ) => {
     const [isRead, setIsRead] = useState(message.read);
     const [isDeleted, setIsDeleted] = useState(false);
-    let received: string = '';
-    useEffect(() => {
-        received = new Date(message.createdAt).toLocaleString();
-    }, [])
+    const { setUnreadCount }: any = useGlobalContext();
+    let received = new Date(message.createdAt).toLocaleString();
     const handleReadClick = async() => {
         const isRead = await markMessage(message._id);
         setIsRead(isRead);
+        setUnreadCount((prevCount: number) => isRead ? prevCount - 1 : prevCount + 1);
         toast.success(!isRead ? "Message marked as new" : "Message marked as read");
     }
 
@@ -49,7 +49,7 @@ const MessageCard = ( { message }: { message: any} ) => {
                    <a href={`tel:${message.phone}`} className="text-blue-500">{message.phone}</a> 
                 </li>
 
-                <li>
+                <li suppressHydrationWarning>
                    <strong> Received:</strong>{' '}
                     { received }
                 </li>

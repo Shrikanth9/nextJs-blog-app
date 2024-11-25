@@ -12,7 +12,7 @@ const BlogCard = ( { blog }: { blog: IBlog}) => {
                     width={300}
                     height={300} 
                     priority
-                    className="w-full object-cover"
+                    className="w-full"
                 />
             </figure>
             <div className="card-body">

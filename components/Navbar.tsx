@@ -1,7 +1,13 @@
+'use client'
+
 import Link from "next/link";
-import { FaBlog, FaGoogle } from "react-icons/fa";
+import { FaBlog } from "react-icons/fa";
+import SignIn from "./signIn";
+import SignOutButton from "./signOut";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
+    const { data: session } = useSession();
     return ( 
         <nav>
             <div className="navbar bg-gray-800 relative">
@@ -35,7 +41,12 @@ const Navbar = () => {
                         </div>
                     </div> */}
                     <div className="flex gap-5 mr-5">
-                        <button className="text-white p-3 rounded-md hover:bg-green-600"> <FaGoogle /></button>
+                        {!session ? (
+                            <>
+                                <SignIn provider="google"/>
+                                <SignIn provider="github"/>
+                            </>
+                            ) : <SignOutButton />}
                     </div>
                 </div>
             </div>

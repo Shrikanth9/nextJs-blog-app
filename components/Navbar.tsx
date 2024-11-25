@@ -4,16 +4,16 @@ import { FaBlog, FaGoogle } from "react-icons/fa";
 const Navbar = () => {
     return ( 
         <nav>
-            <div className="navbar bg-gray-800">
+            <div className="navbar bg-gray-800 relative">
                <div>
                     <Link href="/" className="text-2xl text-white font-bold ml-2 flex gap-2">
-                        <FaBlog className="mt-1"/>
+                        <FaBlog className="mt-1 mr-5 md:mr-1"/>
                         <h2 className="hidden md:inline ml-2"> Blog App </h2>
                     </Link>
                </div>
 
                {/* Mobile menu */}
-               <div className="text-white md:hidden">
+               <div className="text-white gap-3 md:hidden">
                     <Link href="/"  className="p-3 rounded-md hover:bg-green-600"> Home </Link>
                     <Link href="/blogs" className="p-3 rounded-md hover:bg-green-600"> Blogs </Link>
                     <Link href="/blogs/add" className="p-3 rounded-md hover:bg-green-600"> Add blog </Link>
@@ -26,7 +26,7 @@ const Navbar = () => {
                     <Link href="/blogs/add" className="p-3 rounded-md hover:bg-green-600"> Add blog </Link>
                 </div>
 
-                <div className="flex-none gap-2">
+                <div className="absolute inset-y-0 right-0">
                     {/* <div className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
                             <img

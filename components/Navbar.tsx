@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaBlog } from "react-icons/fa";
+import { FaBlog, FaGoogle } from "react-icons/fa";
 
 const Navbar = () => {
     return ( 
@@ -26,10 +26,18 @@ const Navbar = () => {
                     <Link href="/add-blog" className="p-3 rounded-md hover:bg-green-600"> Add blog </Link>
                 </div>
 
-                <div className="text-white">
-                    Profile
+                <div className="flex-none gap-2">
+                    {/* <div className="btn btn-ghost btn-circle avatar">
+                        <div className="w-10 rounded-full">
+                            <img
+                                alt="Tailwind CSS Navbar component"
+                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                        </div>
+                    </div> */}
+                    <div className="flex gap-5 mr-5">
+                        <button className="text-white p-3 rounded-md hover:bg-green-600"> <FaGoogle /></button>
+                    </div>
                 </div>
-
             </div>
         </nav>
      );

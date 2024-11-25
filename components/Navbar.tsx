@@ -40,12 +40,9 @@ const Navbar = () => {
                                 src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
                         </div>
                     </div> */}
-                    <div className="flex gap-5 mr-5">
+                    <div className="flex mr-2">
                         {!session ? (
-                            <>
                                 <SignIn provider="google"/>
-                                <SignIn provider="github"/>
-                            </>
                             ) : <SignOutButton />}
                     </div>
                 </div>

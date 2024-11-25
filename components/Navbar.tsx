@@ -16,14 +16,14 @@ const Navbar = () => {
                <div className="text-white md:hidden">
                     <Link href="/"  className="p-3 rounded-md hover:bg-green-600"> Home </Link>
                     <Link href="/blogs" className="p-3 rounded-md hover:bg-green-600"> Blogs </Link>
-                    <Link href="/add-blog" className="p-3 rounded-md hover:bg-green-600"> Add blog </Link>
+                    <Link href="/blogs/add" className="p-3 rounded-md hover:bg-green-600"> Add blog </Link>
                 </div>
 
                 {/* Desktop menu */}
                <div className="hidden text-white mx-auto gap-20 md:flex">
                     <Link href="/"  className="p-3 rounded-md hover:bg-green-600"> Home </Link>
                     <Link href="/blogs" className="p-3 rounded-md hover:bg-green-600"> Blogs </Link>
-                    <Link href="/add-blog" className="p-3 rounded-md hover:bg-green-600"> Add blog </Link>
+                    <Link href="/blogs/add" className="p-3 rounded-md hover:bg-green-600"> Add blog </Link>
                 </div>
 
                 <div className="flex-none gap-2">

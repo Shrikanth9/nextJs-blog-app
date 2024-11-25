@@ -9,7 +9,7 @@ const Hero = () => {
             <p className="py-6">
               Feel free to explore and contribute to this interactive blog app! Improve it by adding your own thoughts and insights.
             </p>
-            <Link href="/add-blog" className="btn btn-success">Get Started</Link>
+            <Link href="/blogs/add" className="btn btn-success">Get Started</Link>
           </div>
         </div>
       </div>

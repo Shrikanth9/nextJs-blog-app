@@ -4,9 +4,8 @@ import ConnectDB from "@/config/database";
 
 const HomeBlogs = async() => {
     await ConnectDB();
-    const blogs = await Blog.find({});  
-    console.log(blogs);
-      
+    const blogs = await Blog.find({}).limit(3);  
+    
     return ( 
         <section className="text-center">
             <h1 className="text-3xl font-bold text-center mt-10"> Recently posted </h1>

@@ -9,10 +9,9 @@ const BlogCard = ( { blog }: { blog: IBlog}) => {
                 <Image
                     src={image}
                     alt="Shoes"
-                    width={300}
-                    height={300} 
-                    priority
-                    className="w-full"
+                    width={500}
+                    height="0"
+                    className="w-full h-auto object-cover"
                 />
             </figure>
             <div className="card-body">

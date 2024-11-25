@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const BlogCard = ( { blog }: { blog: {id: string, image: string, title: string, content: string}}) => {
-    const {id, image, title, content} = blog;
+const BlogCard = ( { blog }: { blog: IBlog}) => {
+    const {_id: id, image, title, content} = blog;
     return ( 
         <div className="card bg-base-100 w-80 shadow-xl mt-10 md:w-96">
             <figure>

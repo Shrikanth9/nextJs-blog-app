@@ -1,8 +1,8 @@
 import Image from "next/image";
 import BlogThread from "./BlogThread";
 
-const BlogDetails = ({ blog }: { blog: {id: string, image: string, title: string, content: string}}) => {
-    const {id, image, title, content} = blog;
+const BlogDetails = ({ blog }: { blog: IBlog}) => {
+    const {_id: id, image, title, content} = blog;
     return ( 
         <article className="prose lg:prose-xl mx-3">
             <h1 className="text-5xl font-bold text-center my-5"> {title} </h1>

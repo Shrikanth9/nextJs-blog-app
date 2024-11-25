@@ -12,7 +12,7 @@ const AddBlogForm = () => {
                 <div className="label">
                     <span className="label-text font-semibold">Content</span>
                 </div>
-                <textarea className="textarea textarea-bordered h-24" placeholder="Add your story " required></textarea>
+                <textarea className="textarea textarea-bordered textarea-lg min-h-[500px]" placeholder="Add your story " required></textarea>
             </label>
             <label className="form-control mt-5">
                 <div className="label">

@@ -9,8 +9,8 @@ const BlogCard = ( { blog }: { blog: IBlog}) => {
                 <Image
                     src={image}
                     alt="Shoes"
-                    width={500}
-                    height="0"
+                    width={320}
+                    height={180}
                     className="w-full h-auto object-cover"
                 />
             </figure>

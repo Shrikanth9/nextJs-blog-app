@@ -1,4 +1,4 @@
-import { signOutAction } from "@/actions/signOutAction";
+import { signOutAction } from "@/app/actions/signOutAction";
 import { FaSignOutAlt } from "react-icons/fa";
 
 const SignOutButton = () => {

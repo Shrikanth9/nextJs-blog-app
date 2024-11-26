@@ -11,14 +11,14 @@ const BlogCard = ( { blog }: { blog: IBlog}) => {
                     alt="Shoes"
                     width={320}
                     height={180}
-                    className="w-full h-auto object-cover"
+                    className="w-full h-40 object-cover"
                 />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
-                <p>{content}</p>
+                <p>{content.substring(0, 20)}...</p>
                 <div className="card-actions justify-end">
-                    <Link className="btn btn-primary" href={`/blogs/${id}`}>View</Link>
+                    <Link className="btn btn-primary" href={`/blogs/${id}`}>Read</Link>
                 </div>
             </div>
         </div>

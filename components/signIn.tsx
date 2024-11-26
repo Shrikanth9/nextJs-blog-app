@@ -1,4 +1,4 @@
-import { signInAction } from "@/actions/signInAction";
+import { signInAction } from "@/app/actions/signInAction";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const SignIn = ({provider}:{provider: string}) => {

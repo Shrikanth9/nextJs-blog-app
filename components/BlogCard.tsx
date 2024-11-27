@@ -24,7 +24,7 @@ const BlogCard = ( { blog }: { blog: IBlog}) => {
                     </div>
                 </figure>
                 <div className="card-body p-4">
-                    <p className="line-clamp-3">{content}</p>
+                    <p className="overflow-hidden text-ellipsis h-12">{content}</p>
                     <div className="card-actions justify-between flex items-center gap-3 mt-5">
                         <span className="text-sm text-gray-500">{`${dateString}`}</span>
                         <span className="text-sm text-gray-500">

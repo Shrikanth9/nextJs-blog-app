@@ -16,10 +16,14 @@ export const convertImageToBase64URL = async(file: File) => {
 }
 
 export const FormateDate = (date: Date) => {
-    const day = date.getDate();
-    const month = date.toLocaleString('default', { month: 'long' });
-    const year = date.getFullYear();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    return `${day} ${month} ${year} at ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+    const ISTOffset = 5.5;
+    const ISTTime = new Date(date.getTime() + (ISTOffset * 60 * 60 * 1000));
+    return ISTTime.toLocaleString('en-IN', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    }).replace(',', ' at');
 }

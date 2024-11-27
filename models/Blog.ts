@@ -6,4 +6,4 @@ const BlogSchema = new Schema({
     image: String,
 }, { timestamps: true });
 
-export const Blog = models.Blog || model("Blog", BlogSchema);
+export const Blog = models?.Blog || model("Blog", BlogSchema);

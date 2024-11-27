@@ -20,7 +20,7 @@ const HomeBlogs = async() => {
 
                 </>
             ) : (
-                <h1 className="text-3xl font-bold text-center mt-10"> No blog found </h1>
+                <h2 className="text-3xl font-semibold text-center mt-10"> No blog found </h2>
             )}
         </section>
      );

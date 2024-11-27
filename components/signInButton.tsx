@@ -1,20 +1,16 @@
-import { signInAction } from "@/app/actions/signInAction";
+import { signIn } from "next-auth/react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const SignIn = ({provider}:{provider: string}) => {
 
         const handleSignIn = async () => {
-            await signInAction(provider)
+            await signIn(provider)
         }
         return (
-            <form
-              action={handleSignIn}
-            >
-              <button className="text-white p-3 rounded-md hover:bg-green-600"> 
+              <button onClick={handleSignIn} className="text-white p-3 rounded-md hover:bg-green-600"> 
                 { provider === "google" && <FaGoogle />}
                 { provider === "github" && <FaGithub />}
               </button>
-            </form>
      );
 }
  

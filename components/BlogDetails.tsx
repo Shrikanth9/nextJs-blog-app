@@ -5,7 +5,7 @@ const BlogDetails = ({ blog }: { blog: IBlog}) => {
     const {_id: id, image, title, content} = blog;
     return ( 
         <article className="prose lg:prose-xl mx-3">
-            <h1 className="text-5xl font-bold text-center my-5"> {title} </h1>
+            <h1 className="text-2xl md:text-5xl font-bold text-center my-5"> {title} </h1>
             {/* Mobile */}
             <Image className="md:hidden mx-auto rounded-md shadow-md w-full h-auto" src={image} alt={title} width={800} height={450}/>
             

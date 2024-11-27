@@ -14,7 +14,7 @@ const BlogCard = ( { blog }: { blog: IBlog}) => {
                     <Image
                         src={image}
                         alt="Shoes"
-                        fill
+                        fill={true}
                         className="object-cover"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">

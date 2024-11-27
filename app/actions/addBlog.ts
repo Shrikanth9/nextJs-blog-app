@@ -12,7 +12,10 @@ const addBlog = async (formData: FormData) => {
 
     let image = formData.get("image");
     
-    const imageBase64 = await convertImageToBase64URL(image as File).then((url) => url);
+    const imageBase64 = await convertImageToBase64URL(image as File).then((url) => url).catch((error) => {
+        console.log(error);
+        throw new Error(error);
+    });
     
     const uploadedImage = await cloudinary.uploader.upload(`data:image/jpeg;base64,${imageBase64}`, { folder: 'blog-app'})
     .catch((error) => {

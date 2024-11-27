@@ -12,7 +12,7 @@ export const convertImageToBase64URL = async(file: File) => {
         const imageBase64 = imageData.toString('base64');
         
         resolve(imageBase64);
-    })    
+    }).catch((error) => {})   
 }
 
 export const FormateDate = (date: Date) => {

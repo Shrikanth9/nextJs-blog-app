@@ -14,3 +14,12 @@ export const convertImageToBase64URL = async(file: File) => {
         resolve(imageBase64);
     })    
 }
+
+export const FormateDate = (date: Date) => {
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    return `${day} ${month} ${year} at ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+}

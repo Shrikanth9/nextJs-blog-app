@@ -4,4 +4,6 @@ interface IBlog {
     title: string;
     content: string;
     image: string;
+    createdAt: Date;
+    updatedAt: Date;
 }

@@ -16,9 +16,7 @@ export const convertImageToBase64URL = async(file: File) => {
 }
 
 export const FormateDate = (date: Date) => {
-    const ISTOffset = 5.5;
-    const ISTTime = new Date(date.getTime() + (ISTOffset * 60 * 60 * 1000));
-    return ISTTime.toLocaleString('en-IN', {
+    return date.toLocaleString('en-IN', {
         day: 'numeric',
         month: 'long',
         year: 'numeric',

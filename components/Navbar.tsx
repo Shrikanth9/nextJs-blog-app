@@ -12,6 +12,8 @@ const Navbar = () => {
     const { data: session } = useSession();
     const [providers, setProviders] = useState(null)
 
+    const profileImage = session?.user?.image || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+
     const pathname = usePathname();
 
     useEffect(() => {
@@ -57,7 +59,7 @@ const Navbar = () => {
                                         <div className="w-10 rounded-full">
                                             <Image
                                                 alt="Tailwind CSS Navbar component"
-                                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" 
+                                                src={profileImage}
                                                 width={40}
                                                 height={40}
                                             />

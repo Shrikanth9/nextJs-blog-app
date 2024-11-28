@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
     const { data: session } = useSession();
     const [providers, setProviders] = useState(null)
+    const [isProfileOpen, setIsProfileOpen] = useState(false);
 
     const profileImage = session?.user?.image || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
 
@@ -55,7 +56,7 @@ const Navbar = () => {
                                 ))
                             ) : (
                                 <div className="dropdown dropdown-end">
-                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar" onClick={() => setIsProfileOpen(!isProfileOpen)}>
                                         <div className="w-10 rounded-full">
                                             <Image
                                                 alt="Tailwind CSS Navbar component"
@@ -65,16 +66,16 @@ const Navbar = () => {
                                             />
                                         </div>
                                     </div>
-                                    <ul
+                                    {isProfileOpen && <ul
                                         tabIndex={0}
                                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                                        <li>
+                                        <li onClick={() => setIsProfileOpen(!isProfileOpen)}>
                                             <Link href="/profile">
                                                 Profile
                                             </Link>
                                         </li>
                                         <li><button onClick={() => signOut()}>Logout</button></li>
-                                    </ul>
+                                    </ul>}
                                 </div>
                             )}
                     </div>

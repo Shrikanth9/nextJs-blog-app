@@ -8,7 +8,15 @@ const BlogSchema = new Schema({
         required: true
     },
     content: String,
-    image: String,
+    image: {
+        type: String,
+        required: true
+    },
+    totalLikes: {
+        type: Number,
+        default: 0,
+        required: true
+    }
 }, { timestamps: true });
 
 export const Blog = models?.Blog || model("Blog", BlogSchema);

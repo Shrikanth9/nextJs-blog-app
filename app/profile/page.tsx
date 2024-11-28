@@ -6,6 +6,7 @@ import { User } from "@/models/User";
 import { getSessionUser } from "@/utils/getSessionUser";
 import { convertToPlainObj } from "@/utils/Utils";
 import Image from "next/image";
+import Link from "next/link";
 
 const ProfilePage = async() => {
     const session = await getSessionUser();
@@ -34,6 +35,13 @@ const ProfilePage = async() => {
                         <YourBlogCard key={index} blog={blog} />
                     ))}
                 </div>
+            </div>
+            <div className="my-10 flex justify-center">
+                <Link href="/">
+                    <button className="btn btn-outline btn-green-200 px-8 py-2 rounded-full text-lg font-semibold shadow-md hover:shadow-lg">
+                        Back to home
+                    </button>
+                </Link>
             </div>
         </section>
     )

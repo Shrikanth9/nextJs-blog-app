@@ -21,7 +21,7 @@ const AddBlogForm = () => {
                 <div className="label">
                     <span className="label-text font-semibold">Add an image</span>
                 </div>
-                <input type="file" className="file-input file-input-bordered" name="image" required />
+                <input type="file" className="file-input file-input-bordered" accept="image/*" name="image" required />
             </label>
             <div className="mt-10">
                 <AddBlogButton />

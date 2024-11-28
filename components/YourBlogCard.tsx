@@ -1,14 +1,23 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import { FormateDate } from "@/utils/Utils";
+import deleteBlog from "@/app/actions/deleteBlog";
 
 const YourBlogCard = ({ blog }: { blog: IBlog }) => {
   const { _id: id, image, title, content, createdAt } = blog;
   const date = new Date(createdAt);
   const dateString = FormateDate(date);
 
+  const handleDeleteBlog = async (id: string) => {
+    if(window.confirm("Are you sure you want to delete this blog?")){
+      await deleteBlog(id);
+    }
+  };
+
   return (
-    <div className="card-container shadow-lg bg-base-100 w-80 lg:w-96 lg:max-w-sm mt-10">
+    <div className="card-container shadow-lg bg-base-100 w-80 lg:w-96 lg:max-w-sm mt-10 hover:scale-105">
       <figure className="relative aspect-video">
         <Image
           src={image}
@@ -31,13 +40,13 @@ const YourBlogCard = ({ blog }: { blog: IBlog }) => {
               Read
             </Link>
             <span>|</span>
-            <Link href={`/blogs/edit/${id}`} className="underline">
+            <Link href={`/blogs/${id}/edit`} className="underline">
               Edit
             </Link>
             <span>|</span>
-            <Link href={`/blogs/delete/${id}`} className="underline">
+            <button onClick={() => handleDeleteBlog(id)} className="underline">
               Delete
-            </Link>
+            </button>
           </div>
         </div>
       </div>

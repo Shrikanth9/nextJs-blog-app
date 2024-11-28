@@ -11,6 +11,6 @@ const LikeSchema = new Schema({
         ref: "Blog",
         required: true
     }
-}, { timestamps: true });
+});
 
 export const Like = models?.Like || model("Like", LikeSchema);

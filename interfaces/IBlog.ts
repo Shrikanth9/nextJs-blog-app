@@ -6,4 +6,5 @@ interface IBlog {
     image: string;
     createdAt: Date;
     updatedAt: Date;
+    totalLikes: number;
 }

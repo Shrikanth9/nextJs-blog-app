@@ -9,7 +9,7 @@ import { convertImageToBase64URL, convertToPlainObj } from "@/utils/Utils";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-const addBlog = async (formData: FormData) => {
+const editBlog = async (formData: FormData) => {
     const session = await getSessionUser();
 
     if(!session?.user) {
@@ -39,7 +39,7 @@ const addBlog = async (formData: FormData) => {
         title: formData.get("title"),
         owner,
         content: formData.get("content"),
-        image: imageUrl,
+        image: imageUrl
     }
 
     const blog = new Blog(newBlog);
@@ -50,4 +50,4 @@ const addBlog = async (formData: FormData) => {
     redirect(`/blogs/${blog._id}`);
 }
 
-export default addBlog
+export default editBlog

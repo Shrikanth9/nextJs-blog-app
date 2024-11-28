@@ -6,7 +6,7 @@ import { User } from "@/models/User";
 import { convertToPlainObj } from "@/utils/Utils";
 import { Like } from "@/models/Like";
 
-const BlogThread = async({ blogId }: { blogId: string}) => {
+const BlogThread = async({ blogId, totalLikes }: { blogId: string, totalLikes: number}) => {
     const session = await getSessionUser();
 
     if(!session?.user) {
@@ -14,14 +14,13 @@ const BlogThread = async({ blogId }: { blogId: string}) => {
     }
     await ConnectDB();
     const userId = await User.findOne({ email: session?.user?.email }).lean().then((user) => convertToPlainObj(user)._id);
-    const liked = await Like.find({ blogId, userId }).countDocuments().lean();
-    const totalLikes = await Like.find({ blogId }).countDocuments().lean(); 
+    const liked = await Like.findOne({ blogId, userId }).countDocuments().lean().then((count) => count > 0);            
     return ( 
         <div className="text-center text-3xl mt-5">
             <LikeButton 
                 blogId={blogId}
                 userId={userId}
-                liked={liked > 0}
+                liked={liked}
                 totalLikes={totalLikes}
             />
             <div className="inline-block mx-8">

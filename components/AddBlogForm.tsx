@@ -1,4 +1,5 @@
 import addBlog from "../app/actions/addBlog"
+import AddBlogButton from "./AddBlogButton";
 
 const AddBlogForm = () => {
     return ( 
@@ -23,12 +24,7 @@ const AddBlogForm = () => {
                 <input type="file" className="file-input file-input-bordered" name="image" required />
             </label>
             <div className="mt-10">
-                <button
-                    className="btn btn-outline btn-success font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
-                    type="submit"
-                >
-                    Add Blog
-                </button>
+                <AddBlogButton />
             </div>
         </form>
      );

@@ -14,8 +14,8 @@ const BlogThread = async({ blogId }: { blogId: string}) => {
     }
     await ConnectDB();
     const userId = await User.findOne({ email: session?.user?.email }).lean().then((user) => convertToPlainObj(user)._id);
-    const liked = await Like.find({ blogId, userId }).countDocuments();
-    const totalLikes = await Like.find({ blogId }).countDocuments(); 
+    const liked = await Like.find({ blogId, userId }).countDocuments().lean();
+    const totalLikes = await Like.find({ blogId }).countDocuments().lean(); 
     return ( 
         <div className="text-center text-3xl mt-5">
             <LikeButton 

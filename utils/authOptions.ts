@@ -11,7 +11,7 @@ export const authOptions = {
       signIn: async ({ profile, account }: any) => {
          const provider = account?.provider
          const { email, picture:image, name:username } = profile;
-         const userExists = await User.findOne({ email }); 
+         const userExists = await User.findOne({ email }).lean(); 
          if(!userExists) {
             await User.create({
                provider: provider,

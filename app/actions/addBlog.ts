@@ -3,12 +3,21 @@
 import cloudinary from "@/config/cloudinary";
 import ConnectDB from "@/config/database"
 import { Blog } from "@/models/Blog";
-import { convertImageToBase64URL } from "@/utils/Utils";
+import { User } from "@/models/User";
+import { getSessionUser } from "@/utils/getSessionUser";
+import { convertImageToBase64URL, convertToPlainObj } from "@/utils/Utils";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 const addBlog = async (formData: FormData) => {
+    const session = await getSessionUser();
+
+    if(!session?.user) {
+        throw new Error("You must be logged in ");
+    }
     await ConnectDB();
+
+    const owner = await User.findOne({ email: session?.user?.email }).lean().then((user) => convertToPlainObj(user)._id);
 
     let image = formData.get("image");
     
@@ -28,6 +37,7 @@ const addBlog = async (formData: FormData) => {
 
     const newBlog = {
         title: formData.get("title"),
+        owner,
         content: formData.get("content"),
         image: imageUrl
     }

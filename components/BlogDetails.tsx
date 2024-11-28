@@ -1,8 +1,13 @@
 import Image from "next/image";
 import BlogThread from "./BlogThread";
 import Link from "next/link";
+import ConnectDB from "@/config/database";
+import { User } from "@/models/User";
+import { getSessionUser } from "@/utils/getSessionUser";
+import { convertToPlainObj } from "@/utils/Utils";
+import { Like } from "@/models/Like";
 
-const BlogDetails = ({ blog }: { blog: IBlog}) => {
+const BlogDetails = async({ blog }: { blog: IBlog}) => {
     const {_id: id, image, title, content} = blog;
     return ( 
         <article className="prose lg:prose-xl mx-3">
@@ -13,7 +18,7 @@ const BlogDetails = ({ blog }: { blog: IBlog}) => {
             {/* Desktop */}
             <Image className="hidden md:block mx-auto rounded-md shadow-md max-w-4xl" src={image} alt={title} width={800} height={450}/>
 
-            <BlogThread />
+            <BlogThread blogId={id}/>
             <p className="text-center mt-10 mx-2 whitespace-pre-line"> {content} </p>
             <div className="mt-10 flex justify-center">
                 <Link href="/">

@@ -14,7 +14,7 @@ export const authOptions = {
          const userExists = await User.findOne({ email }).lean(); 
          if(!userExists) {
             await User.create({
-               provider: provider,
+               provider,
                username,
                email,
                image

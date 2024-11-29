@@ -8,7 +8,7 @@ import CommentCard from "./CommentCard";
 
 const CommentSection = async({ blogId, userId, totalComments }: { blogId: string, userId: string, totalComments: number }) => {
     await ConnectDB();
-    const comments = await Comment.find({ blogId })
+    const comments: IComment[] = await Comment.find({ blogId })
         .sort({ createdAt: -1 })
         .populate("userId")
         .lean()

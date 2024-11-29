@@ -2,11 +2,11 @@
 
 import ConnectDB from "@/config/database";
 import { Blog } from "@/models/Blog";
-import { Like } from "@/models/Like";
+import { Comment } from "@/models/Comment";
 import { getSessionUser } from "@/utils/getSessionUser";
 import { revalidatePath } from "next/cache";
 
-const deleteBlog = async (blogId: string) => {
+const deleteComment = async (commentId: string, blogId: string) => {
     const session = await getSessionUser();
 
     if(!session?.user) {
@@ -14,11 +14,11 @@ const deleteBlog = async (blogId: string) => {
     }
     await ConnectDB();
 
-    await Blog.deleteOne({ _id: blogId });
-    await Like.deleteMany({ blogId });
+    await Comment.deleteOne({ _id: commentId });
+    await Blog.updateOne({ _id: blogId }, { $inc: { totalComments: -1 } });
 
     revalidatePath("/", "layout");
 
 }
 
-export default deleteBlog
+export default deleteComment

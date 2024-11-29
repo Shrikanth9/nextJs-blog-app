@@ -7,4 +7,5 @@ interface IBlog {
     createdAt: Date;
     updatedAt: Date;
     totalLikes: number;
+    totalComments: number;
 }

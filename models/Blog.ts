@@ -16,6 +16,11 @@ const BlogSchema = new Schema({
         type: Number,
         default: 0,
         required: true
+    },
+    totalComments: {
+        type: Number,
+        default: 0,
+        required: true
     }
 }, { timestamps: true });
 

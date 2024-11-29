@@ -12,7 +12,7 @@ const YourBlogCard = ({ blog }: { blog: IBlog }) => {
 
   const handleDeleteBlog = async (id: string) => {
     if(window.confirm("Are you sure you want to delete this blog?")){
-      await deleteBlog(id);
+      await deleteBlog(id).catch((err) => {throw err});
     }
   };
 

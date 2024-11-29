@@ -1,12 +1,12 @@
-import { IoChatboxOutline } from "react-icons/io5";
 import LikeButton from "./LikeButton";
 import { getSessionUser } from "@/utils/getSessionUser";
 import ConnectDB from "@/config/database";
 import { User } from "@/models/User";
 import { convertToPlainObj } from "@/utils/Utils";
 import { Like } from "@/models/Like";
+import CommentSection from "./CommentSection";
 
-const BlogThread = async({ blogId, totalLikes }: { blogId: string, totalLikes: number}) => {
+const BlogThread = async({ blogId, totalLikes, totalComments }: { blogId: string, totalLikes: number, totalComments: number}) => {
     const session = await getSessionUser();
 
     if(!session?.user) {
@@ -16,16 +16,18 @@ const BlogThread = async({ blogId, totalLikes }: { blogId: string, totalLikes: n
     const userId = await User.findOne({ email: session?.user?.email }).lean().then((user) => convertToPlainObj(user)._id);
     const liked = await Like.findOne({ blogId, userId }).countDocuments().lean().then((count) => count > 0);            
     return ( 
-        <div className="text-center text-3xl mt-5">
+        <div className="flex justify-center items-center gap-5 text-3xl mt-5">
             <LikeButton 
                 blogId={blogId}
                 userId={userId}
                 liked={liked}
                 totalLikes={totalLikes}
             />
-            <div className="inline-block mx-8">
-                <IoChatboxOutline className="mx-8" fill=""/> {" "} 0
-            </div>
+           <CommentSection 
+                blogId={blogId} 
+                userId={userId} 
+                totalComments={totalComments}
+            />
         </div>
      );
 }

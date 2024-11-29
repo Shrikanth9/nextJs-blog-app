@@ -7,8 +7,9 @@ import { convertToPlainObj } from "@/utils/Utils";
 const EditBlogForm = async({ blogId }: { blogId: string }) => {
     await ConnectDB();
     const blog = await Blog.findOne({ _id: blogId }).lean().then((blog) => convertToPlainObj(blog));
+    const editBlogById = editBlog.bind(null, blogId);
     return ( 
-        <form action={editBlog}>
+        <form action={editBlogById}>
             <h1 className="text-3xl font-bold text-center"> Edit blog </h1>
             <label className="form-control mt-5">
                 <div className="label">
@@ -22,12 +23,12 @@ const EditBlogForm = async({ blogId }: { blogId: string }) => {
                 </div>
                 <textarea className="textarea textarea-bordered textarea-lg min-h-[500px]" placeholder="Add your story " name="content" defaultValue={blog.content} required></textarea>
             </label>
-            <label className="form-control mt-5">       
+            {/* <label className="form-control mt-5">       
                 <div className="label">
                     <span className="label-text font-semibold">Add an image (optional)</span>
                 </div>
                 <input type="file" className="file-input file-input-bordered" accept="image/*" name="image"/>
-            </label>
+            </label> */}
             <div className="mt-10">
                 <EditBlogButton />
             </div>

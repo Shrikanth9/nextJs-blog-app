@@ -25,3 +25,26 @@ export const FormateDate = (date: Date) => {
         hour12: false
     }).replace(',', ' at');
 }
+
+export const FormateTimeStamp = (date: Date) => {
+    const milliseconds = date.getTime();
+    const timeElapsed = (Date.now() - milliseconds) / 1000;
+    if (timeElapsed < 60) {
+        return 'Just now';
+    } else if (timeElapsed < 3600) {
+        const minutes = Math.floor(timeElapsed / 60);
+        return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+    } else if (timeElapsed < 86400) {
+        const hours = Math.floor(timeElapsed / 3600);
+        return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+    } else if (timeElapsed < 2592000) {
+        const days = Math.floor(timeElapsed / 86400);
+        return `${days} day${days > 1 ? 's' : ''} ago`;
+    } else if (timeElapsed < 31104000) {
+        const months = Math.floor(timeElapsed / 2592000);
+        return `${months} month${months > 1 ? 's' : ''} ago`;
+    } else if (timeElapsed < 2147483647) {
+        const years = Math.floor(timeElapsed / 31104000);
+        return `${years} year${years > 1 ? 's' : ''} ago`;
+    }
+}

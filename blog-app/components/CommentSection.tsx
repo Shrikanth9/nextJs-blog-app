@@ -26,7 +26,7 @@ const CommentSection = async({ blogId, userId, totalComments }: { blogId: string
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-                <div className="menu p-4 w-80 bg-base-100 mb-auto gap-5 flex flex-col min-h-screen z-100">
+                <div className="menu p-4 w-80 bg-base-100 mb-auto gap-5 flex flex-col h-screen z-100">
                     <label aria-label="close drawer" htmlFor="my-drawer" className="btn btn-sm btn-circle absolute right-2 top-2">X</label>
                     <h2 className="text-2xl p-2">Comments ({totalComments})</h2>
                     <div className="flex flex-col gap-5 h-[calc(100vh-10rem)] overflow-y-scroll">

@@ -1,5 +1,6 @@
 import { User } from "@/models/User"
 import Google from "next-auth/providers/google"
+import ConnectDB from "@/config/database"
 
 export const authOptions = {
     providers: [Google],
@@ -11,6 +12,7 @@ export const authOptions = {
       signIn: async ({ profile, account }: any) => {
          const provider = account?.provider
          const { email, picture:image, name:username } = profile;
+         await ConnectDB();
          const userExists = await User.findOne({ email }).lean(); 
          if(!userExists) {
             await User.create({

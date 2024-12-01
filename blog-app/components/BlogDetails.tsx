@@ -9,10 +9,10 @@ const BlogDetails = async({ blog }: { blog: IBlog}) => {
             <h1 className="text-2xl md:text-5xl font-bold text-center my-5"> {title} </h1>
             <div className="flex justify-center">
                 {/* Mobile */}
-                <Image className="md:hidden mx-auto rounded-md shadow-md w-auto" src={image} alt={title} width={800} height={450}/>
+                <Image className="md:hidden mx-auto rounded-md shadow-md object-cover" src={image} alt={title} width={800} height={450}/>
                 
                 {/* Desktop */}
-                <Image className="hidden md:block mx-auto rounded-md shadow-md w-auto" src={image} alt={title} width={800} height={450}/>
+                <Image className="hidden md:block mx-auto rounded-md shadow-md object-cover" src={image} alt={title} width={800} height={450}/>
             </div>
 
             <BlogThread blogId={id} totalLikes={totalLikes} totalComments={totalComments}/>

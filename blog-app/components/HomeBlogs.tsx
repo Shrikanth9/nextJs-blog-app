@@ -12,7 +12,7 @@ const HomeBlogs = async() => {
             { blogs.length > 0 ? (
                 <>
                     <h1 className="text-3xl font-bold text-center mt-10"> Recently posted </h1>
-                    <div className="grid grid-cols-1 gap-5 justify-items-center md:grid-cols-2 xl:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-5 justify-items-center md:grid-cols-2 xl:grid-cols-3 my-5">
                         {blogs.map((blog: IBlog, index) => (
                             <BlogCard key={index} blog={blog} />
                         ))}

@@ -18,7 +18,7 @@ const ProfilePage = async() => {
     const profileImage = session.user.image || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp";
     await ConnectDB();
     const userId = await User.findOne({ email: session?.user?.email }).lean().then((user) => convertToPlainObj(user)._id);
-    const blogs: IBlog[] = await Blog.find({ owner: userId }).lean().then((blogs) => convertToPlainObj(blogs));
+    const blogs: IBlog[] = await Blog.find({ owner: userId }).sort({ createdAt: -1 }).lean().then((blogs) => convertToPlainObj(blogs));
     return (
         <section className="container mx-auto max-w-7xl">
             <div className="flex flex-col items-center justify-center">

@@ -2,18 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { FormateDate } from "@/utils/Utils";
 
-const BlogCard = ( { blog }: { blog: IBlog}) => {
-    const {_id: id, image, title, content, createdAt} = blog;
+const BlogCard = ({ blog }: { blog: IBlog }) => {
+    const { _id: id, image, title, content, createdAt } = blog;
+    const author = blog.owner as IUser;
     const date = new Date(createdAt);
     const dateString = FormateDate(date);
 
-    return ( 
+    return (
         <Link href={`/blogs/${id}`}>
             <div className="card shadow-lg bg-base-100 w-80 lg:w-96 lg:max-w-sm mt-10 transform transition-transform hover:scale-105">
                 <figure className="relative aspect-video">
                     <Image
                         src={image}
-                        alt="Shoes"
+                        alt={title}
                         fill={true}
                         sizes="100%"
                         className="object-cover"
@@ -23,6 +24,16 @@ const BlogCard = ( { blog }: { blog: IBlog}) => {
                         <h2 className="card-title text-white text-2xl text-center">{title}</h2>
                     </div>
                 </figure>
+                <div className="mt-2 ml-2 text-gray-500 flex items-center gap-2">
+                        <Image
+                            src={author.image}
+                            alt={author.username}
+                            width={20}
+                            height={20}
+                            className="rounded-full"
+                        />
+                        <span className="text-sm">By: {author.username}</span>
+                </div>
                 <div className="card-body p-4">
                     <p className="overflow-hidden text-ellipsis h-12">{content}</p>
                     <div className="card-actions justify-between flex items-center gap-3 mt-5">
@@ -34,7 +45,7 @@ const BlogCard = ( { blog }: { blog: IBlog}) => {
                 </div>
             </div>
         </Link>
-     );
-}
+    );
+};
  
 export default BlogCard;

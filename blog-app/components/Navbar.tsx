@@ -49,7 +49,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="absolute inset-y-0 right-0">
-                    <div className="flex mr-2">
+                    <div className="flex mr-1">
                         {!session ? (
                                 providers && Object.values(providers).map((provider: any) => (
                                     <SignIn key={provider.name} provider={provider.id} />

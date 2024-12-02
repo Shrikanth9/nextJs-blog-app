@@ -4,7 +4,7 @@ import BlogCard from "@/components/BlogCard";
 import { convertToPlainObj } from "@/utils/Utils";
 const BlogsPage = async() => {
     await ConnectDB();
-    let blogs: IBlog[] = await Blog.find({}).sort({ createdAt: -1 }).lean().then((blogs) => convertToPlainObj(blogs));
+    let blogs: IBlog[] = await Blog.find({}).sort({ createdAt: -1 }).populate("owner").lean().then((blogs) => convertToPlainObj(blogs));
     return ( 
         <section>
             { blogs.length > 0 ? (

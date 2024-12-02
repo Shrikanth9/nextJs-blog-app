@@ -5,8 +5,7 @@ import { convertToPlainObj } from "@/utils/Utils";
 
 const HomeBlogs = async() => {
     await ConnectDB();
-    const blogs: IBlog[] = await Blog.find({}).sort({ createdAt: -1 }).limit(3).lean().then((blogs) => convertToPlainObj(blogs));  
-    
+    const blogs: IBlog[] = await Blog.find({}).sort({ createdAt: -1 }).populate("owner").limit(3).lean().then((blogs) => convertToPlainObj(blogs));  
     return ( 
         <section>
             { blogs.length > 0 ? (

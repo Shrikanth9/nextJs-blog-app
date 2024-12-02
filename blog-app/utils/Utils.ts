@@ -22,7 +22,8 @@ export const FormateDate = (date: Date) => {
         year: 'numeric',
         hour: '2-digit',
         minute: '2-digit',
-        hour12: false
+        timeZone: 'Asia/Kolkata',
+        hour12: true
     }).replace(',', ' at');
 }
 

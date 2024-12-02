@@ -17,7 +17,7 @@ const addBlog = async (formData: FormData) => {
     }
     await ConnectDB();
 
-    const owner = await User.findOne({ email: session?.user?.email }).lean().then((user) => convertToPlainObj(user)._id);
+    const owner: string = await User.findOne({ email: session?.user?.email }).lean().then((user) => convertToPlainObj(user)._id);
 
     let image = formData.get("image");
     

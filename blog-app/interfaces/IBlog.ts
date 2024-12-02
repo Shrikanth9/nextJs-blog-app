@@ -1,6 +1,6 @@
 interface IBlog {
     _id: string;
-    owner: string;
+    owner: string | IUser;
     title: string;
     content: string;
     image: string;

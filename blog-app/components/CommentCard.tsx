@@ -5,15 +5,15 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import deleteComment from "@/app/actions/deleteComment";
 
-const CommentCard = ({ comment }: { comment?: any}) => {
+const CommentCard = ({ comment }: { comment: IComment}) => {
 
     const handleDeleteComment = async () => {
         if(window.confirm("Are you sure you want to delete this comment?")){
-            await deleteComment(comment._id, comment.blogId).catch((err) => {throw err});
+            await deleteComment(comment._id, comment.blogId as string).catch((err) => {throw err});
         }
     }
     const {data: session} = useSession();
-    const { userId: { username: author, image: profileImage, email }, comment: commentText, createdAt } = comment;
+    const { userId: { username: author, image: profileImage, email }, comment: commentText, createdAt } = comment as IComment & { userId: IUser };
     const time = new Date(createdAt);
     const timeString = FormateTimeStamp(time);
     return ( 

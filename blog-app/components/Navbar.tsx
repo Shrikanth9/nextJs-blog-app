@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 
 const Navbar = () => {
     const { data: session } = useSession();
-    const [providers, setProviders] = useState(null)
+    const [providers, setProviders] = useState<Object | null>(null)
     const [isProfileOpen, setIsProfileOpen] = useState(false);
 
     const profileImage = session?.user?.image || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
@@ -19,7 +19,7 @@ const Navbar = () => {
 
     useEffect(() => {
         const fetchProviders = async () => {
-            const res: any = await getProviders();
+            const res = await getProviders();
             setProviders(res);
         };
         fetchProviders();
@@ -51,7 +51,7 @@ const Navbar = () => {
                 <div className="absolute inset-y-0 right-0">
                     <div className="flex mr-1">
                         {!session ? (
-                                providers && Object.values(providers).map((provider: any) => (
+                                providers && Object.values(providers).map((provider: { id: string; name: string;}) => (
                                     <SignIn key={provider.name} provider={provider.id} />
                                 ))
                             ) : (

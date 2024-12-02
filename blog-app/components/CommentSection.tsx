@@ -13,7 +13,7 @@ const CommentSection = async({ blogId, userId, totalComments }: { blogId: string
         .populate("userId")
         .lean()
         .then((comments) => comments.map((comment) => convertToPlainObj(comment)));
-    const addCommentWithParams: any = addComment.bind(null, blogId, userId);
+    const addCommentWithParams = addComment.bind(null, blogId, userId);
     return ( 
         <div className="inline-block ml-10">
         <div className="drawer drawer-end">

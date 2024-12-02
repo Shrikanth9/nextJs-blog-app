@@ -3,7 +3,7 @@ import ConnectDB from "@/config/database";
 import BlogDetails from "@/components/BlogDetails";
 import { convertToPlainObj } from "@/utils/Utils";
 
-const BlogPage = async({ params }: any) => {
+const BlogPage = async({ params }: { params: Promise<{ id: string }>}) => {
     await ConnectDB();
     const { id } = await params;
     const blog: IBlog = await Blog.findById(id).populate("owner").lean().then((blog) => convertToPlainObj(blog));

@@ -1,6 +1,6 @@
 import EditBlogForm from "@/components/EditBlogForm";
 
-const EditBlogPage = async({ params }: any) => {
+const EditBlogPage = async({ params }: { params: Promise<{ id: string }>}) => {
     const { id } = await params;
     return ( 
         <section className="mt-5">

@@ -1,4 +1,4 @@
-export const convertToPlainObj = (obj: any) => {
+export const convertToPlainObj = (obj: Object) => {
     return JSON.parse(JSON.stringify(obj));
 };
 

@@ -5,9 +5,11 @@ import ConnectDB from "@/config/database";
 import { convertToPlainObj } from "@/utils/Utils";
 import {Comment} from "@/models/Comment";
 import CommentCard from "./CommentCard";
+import { User } from "@/models/User";
 
 const CommentSection = async({ blogId, userId, totalComments }: { blogId: string, userId: string, totalComments: number }) => {
     await ConnectDB();
+    await User.findById(userId);
     const comments: IComment[] = await Comment.find({ blogId })
         .sort({ createdAt: -1 })
         .populate("userId")

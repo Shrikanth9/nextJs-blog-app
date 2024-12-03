@@ -2,9 +2,13 @@ import { Blog } from "@/models/Blog";
 import BlogCard from "./BlogCard";
 import ConnectDB from "@/config/database";
 import { convertToPlainObj } from "@/utils/Utils";
+import { User } from "@/models/User";
+import { getSessionUser } from "@/utils/getSessionUser";
 
 const HomeBlogs = async() => {
+    const session = await getSessionUser();
     await ConnectDB();
+    await User.findOne({ email: session?.user?.email });
     const blogs: IBlog[] = await Blog.find({}).sort({ createdAt: -1 }).populate("owner").limit(3).lean().then((blogs) => convertToPlainObj(blogs));  
     return ( 
         <section>

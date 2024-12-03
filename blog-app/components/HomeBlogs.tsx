@@ -8,7 +8,7 @@ import { getSessionUser } from "@/utils/getSessionUser";
 const HomeBlogs = async() => {
     const session = await getSessionUser();
     await ConnectDB();
-    await User.findOne({ email: session?.user?.email });
+    await User.findOne({ email: session?.user?.email }).lean();
     const blogs: IBlog[] = await Blog.find({}).sort({ createdAt: -1 }).populate("owner").limit(3).lean().then((blogs) => convertToPlainObj(blogs));  
     return ( 
         <section>
